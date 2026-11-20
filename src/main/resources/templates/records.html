@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Saved records</title>
+    <link rel="stylesheet" href="/css/Style.css">
+</head>
+<body class="home-page">
+
+<main class="panel panel-wide">
+    <h1>Saved records</h1>
+    <p>Everything below is stored in the H2 database file <code>data/systemday.mv.db</code>.</p>
+
+    <h2>Loans</h2>
+    <table>
+        <thead>
+        <tr><th>Enrollment</th><th>Book</th><th>Date</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="loan : ${loans}">
+            <td th:text="${loan.enrollment}"></td>
+            <td th:text="${loan.bookCode}"></td>
+            <td th:text="${loan.loanDateText}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(loans)}"><td colspan="3">No loans yet.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Book stock</h2>
+    <table>
+        <thead>
+        <tr><th>Code</th><th>Title</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.code}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.available} ? 'Available' : 'On loan'"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Orders</h2>
+    <table>
+        <thead>
+        <tr><th>Order</th><th>Customer</th><th>Items</th><th>Total (R$)</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.orderNumber}"></td>
+            <td th:text="${order.customerName}"></td>
+            <td th:text="${order.items}"></td>
+            <td th:text="${order.total}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(orders)}"><td colspan="4">No orders yet.</td></tr>
+        </tbody>
+    </table>
+
+    <a class="button" href="/">Back to home</a>
+</main>
+
+</body>
+</html>

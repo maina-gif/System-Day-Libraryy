@@ -1,0 +1,162 @@
+/* Shared color palette and typography */
+:root {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: #f5f3ff;
+    background: #100d1d;
+
+    --accent: #c4b5fd;
+    --accent-dark: #7c3aed;
+    --panel: rgba(20, 17, 35, 0.82);
+    --border: rgba(221, 214, 254, 0.28);
+}
+
+/* Basic page setup */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px;
+    background:
+            radial-gradient(circle at top, #28204a, #100d1d 65%);
+}
+
+/* Main content panel */
+.panel {
+    width: min(100%, 760px);
+    margin: 0 auto;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--panel);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+}
+
+/* Headings and text */
+h1,
+h2 {
+    color: var(--accent);
+}
+
+h1 {
+    margin-top: 0;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+p {
+    line-height: 1.65;
+}
+
+/* Links styled as magical buttons */
+.button {
+    display: inline-block;
+    margin: 8px 8px 0 0;
+    padding: 12px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent-dark), #4c1d95);
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 160ms ease, filter 160ms ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+}
+
+/* Form controls */
+label {
+    display: block;
+    margin: 16px 0 6px;
+    font-weight: 700;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    max-width: 480px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #211a32;
+    font: inherit;
+}
+
+input:focus,
+select:focus {
+    outline: 3px solid rgba(196, 181, 253, 0.4);
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent-dark), #4c1d95);
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(1.15);
+}
+
+/* Home page: Frieren wallpaper and readable overlay */
+.home-page {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 24px;
+    background:
+            linear-gradient(90deg, rgba(9, 11, 24, 0.78), rgba(9, 11, 24, 0.28)),
+            linear-gradient(0deg, rgba(9, 11, 24, 0.65), transparent 65%),
+            url("/images/frieren-bg.jpg") center / cover no-repeat fixed;
+}
+
+.home-panel {
+    margin: 0;
+    background: rgba(15, 18, 35, 0.72);
+    border-color: rgba(219, 234, 254, 0.38);
+}
+
+/* Character color themes for the other pages */
+.theme-merlin {
+    --accent: #c4b5fd;
+    --accent-dark: #6d28d9;
+    --panel: rgba(24, 18, 45, 0.88);
+}
+
+.theme-megumin {
+    --accent: #fecaca;
+    --accent-dark: #b91c1c;
+    --panel: rgba(48, 16, 23, 0.88);
+}
+
+.theme-madoka {
+    --accent: #fbcfe8;
+    --accent-dark: #db2777;
+    --panel: rgba(48, 20, 43, 0.88);
+}
+
+/* Small-screen adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 16px;
+    }
+
+    .panel {
+        padding: 24px;
+    }
+
+    .home-page {
+        background-attachment: scroll;
+    }
+}
